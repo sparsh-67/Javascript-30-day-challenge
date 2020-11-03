@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DrumKit</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="keybar">
+    <div data-key="65" class="keyclass">A</div>
+    <div data-key="83" class="keyclass">S</div>
+    <div data-key="68" class="keyclass">D</div>
+    <div data-key="70" class="keyclass">F</div>
+    <div data-key="71" class="keyclass">G</div>
+    <div data-key="72" class="keyclass">H</div>
+    <div data-key="74" class="keyclass">J</div>
+    <div data-key="75" class="keyclass">K</div>
+    <div data-key="76" class="keyclass">L</div>
+    <div data-key="90" class="keyclass">Z</div>
+    <div data-key="88" class="keyclass">X</div>
+    <div data-key="67" class="keyclass">C</div>
+    <div data-key="86" class="keyclass">V</div>
+    <div data-key="66" class="keyclass">B</div>
+    <div data-key="78" class="keyclass">N</div>
+</div>
+<audio data-key="65" src="cl_hihat.wav"></audio>
+<audio data-key="83" src="claves.wav"></audio>
+<audio data-key="68" src="conga1.wav"></audio>
+<audio data-key="70" src="cowbell.wav"></audio>
+<audio data-key="71" src="crashcym.wav"></audio>
+<audio data-key="72" src="handclap.wav"></audio>
+<audio data-key="74" src="hi_conga.wav"></audio>
+<audio data-key="75" src="hightom.wav"></audio>
+<audio data-key="76" src="kick1.wav"></audio>
+<audio data-key="90" src="kick2.wav"></audio>
+<audio data-key="88" src="maracas.wav"></audio>
+<audio data-key="67" src="open_hh.wav"></audio>
+<audio data-key="86" src="rimshot.wav"></audio>
+<audio data-key="66" src="snare.wav"></audio>
+<audio data-key="78" src="tom1.wav"></audio>
+<script>
+    function normal(){
+        this.classList.remove('playing');
+    }
+    function play1(e) {
+        btn=document.querySelector(`.keyclass[data-key="${e.keyCode}"]`);
+        audi=document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        if(!btn)return;
+        audi.currentTime=0;
+        audi.play();
+        btn.classList.add('playing');
+        btn.addEventListener("transitionend",normal);
+        }
+
+    window.addEventListener("keydown",play1);
+</script>
+    
+</body>
+</html>
